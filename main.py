@@ -1,5 +1,5 @@
-#Creating a project to manage taks and deadlines around the project."""
-#At first i creat the class with the name "Project" and then i create the init method to initialize the project with a name, description, and deadline."""
+#Creating a project to manage taks and deadlines around the project.
+#At first i creat the class with the name "Project" and then i create the init method to initialize the project with a name, description, and deadline.
 
 from datetime import datetime
 
@@ -11,10 +11,19 @@ class  Project:
         self.due_date = due_date
         self.status = status if status is not None else "Not Started"
 
-#Add a method to input users files"""
-#After adding the input method, i creat a loop to validate the input and make sure that the user enters a valid project name etc. """
-#Validate loop works by checking if the input is empty or not."""
-#I also added a dictionary allowed statuses to be sure that the user enters a valid status and to avoid laters errors in the code."""
+#add method show_details to display the project details in a formatted way.    
+    def show_details(self):
+        print("\n--- Project Details ---")
+        print(f"Name: {self.name}")
+        print(f"Description: {self.description}")
+        print(f"Start date: {self.start_date}")
+        print(f"Due date: {self.due_date}")
+        print(f"Status: {self.status}")
+
+#Add a method to input users files.
+#After adding the input method, i creat a loop to validate the input and make sure that the user enters a valid project name etc. 
+#Validate loop works by checking if the input is empty or not.
+#I also added a dictionary allowed statuses to be sure that the user enters a valid status and to avoid laters errors in the code.
 
 def input_project_details():
     while True:
@@ -29,8 +38,8 @@ def input_project_details():
             break
         print("Project description cannot be empty. Please enter a valid description.")
 
-#For the start_date and due_date, I used datetime.stiptime to validate the input and make sure that the user enters a valid date in the format MM/DD/YYYY."""
-#Also start_date and due_date are cheked by while look but with try and except to catch the ValueError exception if the user enters an invalid date."""
+#For the start_date and due_date, I used datetime.stiptime to validate the input and make sure that the user enters a valid date in the format MM/DD/YYYY.
+#Also start_date and due_date are cheked by while look but with try and except to catch the ValueError exception if the user enters an invalid date.
     while True:
         start_date = input("Enter start date (MM/DD/YYYY): ").strip()
 
@@ -74,4 +83,4 @@ def input_project_details():
     )
     
 project = input_project_details()
-print(project.name, project.description, project.start_date, project.due_date)
+project.show_details()
