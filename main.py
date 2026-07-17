@@ -2,6 +2,8 @@
 #At first i creat the class with the name "Project" and then i create the init method to initialize the project with a name, description, and deadline.
 
 from datetime import datetime
+#add the json module to save the project details in a json file - before the SQL (just to test if it's working)
+import json
 
 class  Project:
     def __init__(self,name,description,start_date,due_date,status=None):
@@ -19,6 +21,16 @@ class  Project:
         print(f"Start date: {self.start_date}")
         print(f"Due date: {self.due_date}")
         print(f"Status: {self.status}")
+#add methof to_dictionary to convert the project details into a dictionary format, which can be useful for saving the data in a JSON file or other formats.
+
+    def to_dictionary(self):
+        return {
+            "name": self.name,
+            "description": self.description,
+            "start_date": self.start_date,
+            "due_date": self.due_date,
+            "status": self.status
+        }
 
 #Add a method to input users files.
 #After adding the input method, i creat a loop to validate the input and make sure that the user enters a valid project name etc. 
