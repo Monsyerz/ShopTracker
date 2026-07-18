@@ -4,7 +4,8 @@
 from datetime import datetime
 #add the json module to save the project details in a json file - before the SQL (just to test if it's working)
 import json
-
+#use pathlib to create a path for the json file and to make sure that the file is created in the same directory as the main.py file.
+from pathlib import Path
 class  Project:
     def __init__(self,name,description,start_date,due_date,status=None):
         self.name = name
@@ -95,9 +96,13 @@ def input_project_details():
     )
 def save_project_to_json(projects):
     projects_data=[]
+
     for project in projects:
         projects_data.append(project.to_dictionary())
-    with open("projects.json", "w") as file:    
+    
+    file_path = Path(__file__).parent / "projects.json"
+    
+    with open(file_path, "w", encoding="utf-8") as file:
         json.dump(projects_data, file, indent=4)
 
 
