@@ -93,6 +93,19 @@ def input_project_details():
         due_date,
         status
     )
-    
-project = input_project_details()
+def save_project_to_json(projects):
+    projects_data=[]
+    for project in projects:
+        projects_data.append(project.to_dictionary())
+    with open("projects.json", "w") as file:    
+        json.dump(projects_data, file, indent=4)
+
+
+projects = []
+project=input_project_details()
+projects.append(project)
+
+save_project_to_json(projects)
+
 project.show_details()
+print("\nProject details saved to projects.json.")
