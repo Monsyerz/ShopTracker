@@ -6,6 +6,7 @@ from datetime import datetime
 import json
 #use pathlib to create a path for the json file and to make sure that the file is created in the same directory as the main.py file.
 from pathlib import Path
+
 class  Project:
     def __init__(self,name,description,start_date,due_date,status=None):
         self.name = name
