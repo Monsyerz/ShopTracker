@@ -53,29 +53,46 @@ def input_project_details():
 
 #For the start_date and due_date, I used datetime.stiptime to validate the input and make sure that the user enters a valid date in the format MM/DD/YYYY.
 #Also start_date and due_date are cheked by while look but with try and except to catch the ValueError exception if the user enters an invalid date.
+    # Validate the start date and convert it into a datetime object.
+# The datetime object will later be used to compare the start date with the due date.
     while True:
         start_date = input("Enter start date (MM/DD/YYYY): ").strip()
 
         try:
-            datetime.strptime(start_date, "%m/%d/%Y")
+            start_date_object = datetime.strptime(start_date, "%m/%d/%Y")
             break
         except ValueError:
-            print("Invalid date. Use MM/DD/YYYY, for example 07/16/2026.")
+            print(
+                "Invalid date. Use MM/DD/YYYY, "
+                "for example 07/16/2026."
+            )
 
+
+    # Validate the due date and make sure it is later than the start date.
     while True:
         due_date = input("Enter due date (MM/DD/YYYY): ").strip()
 
         try:
-            datetime.strptime(due_date, "%m/%d/%Y")
+            due_date_object = datetime.strptime(due_date, "%m/%d/%Y")
+
+            # The project cannot finish before or on the same day it starts.
+            if due_date_object <= start_date_object:
+                print("Due date must be later than the start date.")
+                continue
+
             break
+
         except ValueError:
-                print("Invalid date. Use MM/DD/YYYY, for example 09/30/2026.")
-    allowed_statuses = {
-            "not started": "Not Started",
-            "active": "Active",
-            "on hold": "On Hold",
-            "completed": "Completed"
-        }
+            print(
+                "Invalid date. Use MM/DD/YYYY, "
+                "for example 09/30/2026."
+            )
+        allowed_statuses = {
+                "not started": "Not Started",
+                "active": "Active",
+                "on hold": "On Hold",
+                "completed": "Completed"
+            }
 
     while True:
             status_input = input(
@@ -101,7 +118,7 @@ def save_project_to_json(projects):
         projects_data.append(project.to_dictionary())
     
     file_path = Path(__file__).parent / "projects.json"
-    
+
     with open(file_path, "w", encoding="utf-8") as file:
         json.dump(projects_data, file, indent=4)
 
