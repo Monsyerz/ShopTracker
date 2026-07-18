@@ -17,7 +17,7 @@
 * [x] Collect project information from the console
 
 ## Next Steps
-* [ ] Create and organize the `README.md` file
+* [x] Create and organize the `README.md` file
 * [ ] Create a list for storing multiple projects
 * [ ] Add a menu for creating a new project
 * [ ] Add an option to display all projects
