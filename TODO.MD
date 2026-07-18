@@ -18,14 +18,14 @@
 
 ## Next Steps
 * [x] Create and organize the `README.md` file
-* [ ] Create a list for storing multiple projects
+* [x] Create a list for storing multiple projects
 * [ ] Add a menu for creating a new project
 * [ ] Add an option to display all projects
-* [ ] Save projects to a JSON file
+* [x] Save projects to a JSON file
 * [ ] Load projects from the JSON file when the program starts
 * [ ] Add an option to edit a project
 * [ ] Add an option to delete a project
-* [ ] Validate that the due date is not earlier than the start date
+* [x] Validate that the due date is not earlier than the start date
 * [ ] Add a unique ID to every project
 * [ ] Add tasks assigned to individual projects
 
